@@ -67,12 +67,6 @@
     }
 
     nav {
-      <div id="hamburgerDropdown" class="dropdown">
-        <button onclick="alert('Home clicked')">Home</button>
-        <button onclick="alert('About clicked')">About</button>
-        <button onclick="alert('Contact clicked')">Contact</button>
-      </div>
-
       display: flex;
       gap: 10px;
     }
@@ -135,9 +129,7 @@
       .dropdown.show {
         display: flex;
       }
-    }
     
-    /*@media (max-width: 768px) {
       nav {
         display: none;
       }
@@ -149,21 +141,31 @@
       .container {
         flex-direction: column;
       }
-    }*/
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="menu-title">My Responsive Interface</div>
-    <nav id="menuNav">
-      <button onclick="alert('Home clicked')">Home</button>
-      <button onclick="alert('About clicked')">About</button>
-      <button onclick="alert('Contact clicked')">Contact</button>
-      <button id="darkModeToggle">🌙</button>
-    </nav>
-    <button class="hamburger" onclick="toggleDropdown()">☰</button>
-  </header>
+<header>
+  <div class="menu-title">Landscaping on Wheels</div>
+  
+  <nav id="menuNav">
+     <button onclick="alert('Home clicked')">Home</button>
+     <button onclick="alert('About clicked')">About</button>
+     <button onclick="alert('Contact clicked')">Contact</button>
+     <button id="darkModeToggle">🌙</button>
+  </nav>
+
+  <button class="hamburger" onclick="toggleDropdown()">☰</button>
+
+  <!-- This is the mobile dropdown -->
+  <div id="hamburgerDropdown" class="dropdown">
+    <button onclick="alert('Home clicked')">Home</button>
+    <button onclick="alert('About clicked')">About</button>
+    <button onclick="alert('Contact clicked')">Contact</button>
+  </div>
+</header>
+
 
   <div class="container">
     <aside id="sidebar">
@@ -176,7 +178,7 @@
     </aside>
 
     <main>
-      <h1>Landscaping on Wheels</h1>
+      <h1>Home</h1>
       <p class="subtitle">Welcome to the Official Landscaping on Wheels Website</s1>
     </main>
   </div>
