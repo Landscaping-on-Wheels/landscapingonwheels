@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<body class="dark-mode">
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -47,6 +46,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -117,7 +118,7 @@
       padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 0 10px #00000055;
-      z-index: 1000;
+      z-index: 9999;
     }
 
     .dropdown button {
@@ -146,6 +147,8 @@
 </head>
 <body>
 
+<body class="dark-mode">
+  
 <header>
   <div class="menu-title">Landscaping on Wheels</div>
   
@@ -159,7 +162,6 @@
   <button class="hamburger" onclick="toggleDropdown()">☰</button>
 </header>
 
-<!-- 🟢 FIXED: Move dropdown content here -->
 <div id="hamburgerDropdown" class="dropdown">
   <button onclick="alert('Home clicked')">Home</button>
   <button onclick="alert('About clicked')">About</button>
@@ -187,10 +189,10 @@
     const dropdown = document.getElementById('hamburgerDropdown');
     
     function toggleDropdown() {
-      dropdown.classList.toggle('show'); // this shows/hides the dropdown
+      dropdown.classList.toggle('show'); // this shows/hides the dropdown (mobile)
     }
 
-    window.addEventListener('click', (e) => {
+    window.addEventListener('click', (e) => { //listens for clicks outside of hamburger (for mobile)
       setTimeout(() => {
         if (!e.target.closest('.hamburger') && !e.target.closest('.dropdown')) {
           dropdown.classList.remove('show');
