@@ -125,6 +125,27 @@
       margin: 0.3rem 0;
     }
 
+    /* Particle styles */
+    .particle {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      width: 10px;
+      height: 10px;
+      background: var(--button-bg);
+      opacity: 0.8;
+      animation: particleAnim 0.6s ease-out forwards;
+      z-index: 10000;
+    }
+
+    @keyframes particleAnim {
+      to {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+
     @media (max-width: 768px) {
       .dropdown.show {
         display: flex;
@@ -198,6 +219,25 @@
       dropdown.classList.remove('show');
     }
   });
+
+  document.addEventListener('click', (e) => {
+    // Create particle element
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+
+    // Set initial position centered on click coords
+    const size = 10;
+    particle.style.left = `${e.clientX - size / 2}px`;
+    particle.style.top = `${e.clientY - size / 2}px`;
+
+    document.body.appendChild(particle);
+
+    // Remove the particle after animation ends
+    particle.addEventListener('animationend', () => {
+      particle.remove();
+    });
+  });
+
 
   darkToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
