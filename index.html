@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg-color: #ffffff;
+      --bg-color: #f5f2eb;
       --text-color: #000000;
       --subtitle-color: #424242;
-      --header-bg: #333;
+      --header-bg: #e3d9c6;
       --button-bg: #5b8f5c;
       --button-hover: #456b45;
       --sidebar-bg: #f4f4f4;
@@ -78,6 +78,7 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
       cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     nav button:hover, #darkModeToggle:hover {
@@ -208,7 +209,15 @@
 <script>
   const darkToggle = document.getElementById('darkModeToggle');
   const dropdown = document.getElementById('hamburgerDropdown');
+  const messages = [
+    "Rolling in style...",
+    "Lawn and order!",
+    "We mow you down with style!",
+    "Grass, but make it fashion."
+  ];
 
+  document.querySelector('.subtitle').textContent = messages[Math.floor(Math.random() * messages.length)]
+  
   function toggleDropdown() {
     dropdown.classList.toggle('show');
   }
