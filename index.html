@@ -112,7 +112,7 @@
       flex-direction: column;
       background-color: var(--header-bg); /* dark background */
       position: absolute;
-      top: 60px;
+      top: 70px;
       right: 10px;
       padding: 1rem;
       border-radius: 8px;
@@ -157,15 +157,14 @@
   </nav>
 
   <button class="hamburger" onclick="toggleDropdown()">☰</button>
-
-  <!-- This is the mobile dropdown -->
-  <div id="hamburgerDropdown" class="dropdown">
-    <button onclick="alert('Home clicked')">Home</button>
-    <button onclick="alert('About clicked')">About</button>
-    <button onclick="alert('Contact clicked')">Contact</button>
-  </div>
 </header>
 
+<!-- 🟢 FIXED: Move dropdown content here -->
+<div id="hamburgerDropdown" class="dropdown">
+  <button onclick="alert('Home clicked')">Home</button>
+  <button onclick="alert('About clicked')">About</button>
+  <button onclick="alert('Contact clicked')">Contact</button>
+</div>
 
   <div class="container">
     <aside id="sidebar">
@@ -179,7 +178,7 @@
 
     <main>
       <h1>Home</h1>
-      <p class="subtitle">Welcome to the Official Landscaping on Wheels Website</s1>
+      <p class="subtitle">Welcome to the Official Landscaping on Wheels Website</p>
     </main>
   </div>
 
@@ -192,11 +191,13 @@
     }
 
     window.addEventListener('click', (e) => {
-      if (!e.target.closest('.hamburger') && !e.target.closest('.dropdown')) {
-        document.getElementById('hamburgerDropdown').classList.remove('show');
-      }
+      setTimeout(() => {
+        if (!e.target.closest('.hamburger') && !e.target.closest('.dropdown')) {
+          dropdown.classList.remove('show');
+        }
+      }, 0);
     });
-
+    
     darkToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       darkToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
