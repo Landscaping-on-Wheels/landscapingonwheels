@@ -62,7 +62,6 @@
       text-align: center;
     }
 
-
     .menu-title {
       font-size: 1.2rem;
     }
@@ -100,7 +99,7 @@
     }
 
     aside {
-      display: none; /* Sidebar is still present but hidden */
+      display: none;
     }
 
     main {
@@ -108,10 +107,11 @@
       padding: 1rem;
       overflow: auto;
     }
+
     .dropdown {
-      display: none; /* hide it by default */
+      display: none;
       flex-direction: column;
-      background-color: var(--header-bg); /* dark background */
+      background-color: var(--header-bg);
       position: absolute;
       top: 70px;
       right: 10px;
@@ -125,12 +125,11 @@
       margin: 0.3rem 0;
     }
 
-/* On small screens ONLY, show this when it has the class "show" */
     @media (max-width: 768px) {
       .dropdown.show {
         display: flex;
       }
-    
+
       nav {
         display: none;
       }
@@ -167,42 +166,43 @@
   <button onclick="alert('Contact clicked')">Contact</button>
 </div>
 
-  <div class="container">
-    <aside id="sidebar">
-      <h2>Controls (Hidden)</h2>
-      <div class="button-group">
-        <button>Button 1</button>
-        <button>Button 2</button>
-        <button>Button 3</button>
-      </div>
-    </aside>
+<div class="container">
+  <aside id="sidebar">
+    <h2>Controls (Hidden)</h2>
+    <div class="button-group">
+      <button>Button 1</button>
+      <button>Button 2</button>
+      <button>Button 3</button>
+    </div>
+  </aside>
 
-    <main>
-      <h1>Home</h1>
-      <p class="subtitle">Welcome to the Official Landscaping on Wheels Website</p>
-    </main>
-  </div>
+  <main>
+    <h1>Home</h1>
+    <p class="subtitle">Welcome to the Official Landscaping on Wheels Website</p>
+    <p>update check</p>
+  </main>
+</div>
 
-  <script>
-    const darkToggle = document.getElementById('darkModeToggle');
-    const dropdown = document.getElementById('hamburgerDropdown');
-    
-    function toggleDropdown() {
-      dropdown.classList.toggle('show'); // this shows/hides the dropdown (mobile)
+<script>
+  const darkToggle = document.getElementById('darkModeToggle');
+  const dropdown = document.getElementById('hamburgerDropdown');
+
+  function toggleDropdown() {
+    dropdown.classList.toggle('show');
+  }
+
+  // Proper outside click detection
+  window.addEventListener('click', (e) => {
+    if (!e.target.closest('.hamburger') && !e.target.closest('.dropdown')) {
+      dropdown.classList.remove('show');
     }
+  });
 
-    window.addEventListener('click', (e) => {
-      if (!e.target.closest('.hamburger') && !e.target.closest('.dropdown')) {
-        dropdown.classList.remove('show');
-      }
-    });
-
-    
-    darkToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      darkToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    });
-  </script>
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    darkToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+  });
+</script>
 
 </body>
 </html>
